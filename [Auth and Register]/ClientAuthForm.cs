@@ -55,7 +55,7 @@ namespace WinFormsApp1
             string query = $"SELECT Id, Login, Password, IsAdmin FROM Accounts" +
                             $" WHERE Login='{userLogin}' AND Password='{userPass}' AND IsAdmin=0";
 
-            SqlCommand command = new SqlCommand(query, db.GetConnection());
+            SqlCommand command = new SqlCommand(query, connection);
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -83,7 +83,7 @@ namespace WinFormsApp1
                 MessageBox.Show("Пароль неправильний або такої обліковки не існує", "Пароль неправильний", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
         }
     }
 }

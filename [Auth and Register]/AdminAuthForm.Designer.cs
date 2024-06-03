@@ -141,7 +141,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDark;
+            BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(384, 381);
             Controls.Add(btn_back);
             Controls.Add(btn_login);
@@ -152,7 +152,7 @@
             Controls.Add(icon_admin);
             Name = "AdminAuthForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Авторизація клієнта";
+            Text = "Авторизація адміна";
             ((System.ComponentModel.ISupportInitialize)icon_logo).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
