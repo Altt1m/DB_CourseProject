@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class ClientAuthForm : Form
+    public partial class ClientForm : Form
     {
-        public ClientAuthForm()
+        public ClientForm(int userId)
         {
             InitializeComponent();
         }
-
     }
 }

@@ -77,7 +77,7 @@
             // icon_client
             // 
             icon_client.Image = (Image)resources.GetObject("icon_client.Image");
-            icon_client.Location = new Point(71, 139);
+            icon_client.Location = new Point(63, 131);
             icon_client.Name = "icon_client";
             icon_client.Size = new Size(70, 68);
             icon_client.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -87,7 +87,7 @@
             // icon_admin
             // 
             icon_admin.Image = (Image)resources.GetObject("icon_admin.Image");
-            icon_admin.Location = new Point(71, 228);
+            icon_admin.Location = new Point(63, 239);
             icon_admin.Name = "icon_admin";
             icon_admin.Size = new Size(70, 68);
             icon_admin.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -98,7 +98,7 @@
             // 
             btn_clientAuth.FlatStyle = FlatStyle.Popup;
             btn_clientAuth.Font = new Font("Bahnschrift SemiCondensed", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_clientAuth.Location = new Point(157, 139);
+            btn_clientAuth.Location = new Point(162, 131);
             btn_clientAuth.Name = "btn_clientAuth";
             btn_clientAuth.Size = new Size(166, 66);
             btn_clientAuth.TabIndex = 7;
@@ -110,7 +110,7 @@
             // 
             btn_adminAuth.FlatStyle = FlatStyle.Popup;
             btn_adminAuth.Font = new Font("Bahnschrift SemiCondensed", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_adminAuth.Location = new Point(157, 230);
+            btn_adminAuth.Location = new Point(162, 241);
             btn_adminAuth.Name = "btn_adminAuth";
             btn_adminAuth.Size = new Size(166, 66);
             btn_adminAuth.TabIndex = 8;

@@ -32,15 +32,17 @@
             label1 = new Label();
             icon_logo = new PictureBox();
             panel1 = new Panel();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            textBox_login = new TextBox();
+            textBox_password = new TextBox();
             icon_client = new PictureBox();
-            pictureBox1 = new PictureBox();
-            button1 = new Button();
+            icon_password = new PictureBox();
+            btn_login = new Button();
+            btn_back = new Button();
+            label_register = new Label();
             ((System.ComponentModel.ISupportInitialize)icon_logo).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)icon_client).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)icon_password).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -74,54 +76,79 @@
             panel1.Size = new Size(398, 75);
             panel1.TabIndex = 3;
             // 
-            // textBox1
+            // textBox_login
             // 
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(172, 129);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(133, 29);
-            textBox1.TabIndex = 4;
+            textBox_login.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_login.Location = new Point(170, 127);
+            textBox_login.Name = "textBox_login";
+            textBox_login.Size = new Size(133, 29);
+            textBox_login.TabIndex = 4;
             // 
-            // textBox2
+            // textBox_password
             // 
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(172, 235);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(133, 29);
-            textBox2.TabIndex = 5;
-            textBox2.UseSystemPasswordChar = true;
+            textBox_password.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox_password.Location = new Point(170, 217);
+            textBox_password.Name = "textBox_password";
+            textBox_password.Size = new Size(133, 29);
+            textBox_password.TabIndex = 5;
+            textBox_password.UseSystemPasswordChar = true;
             // 
             // icon_client
             // 
             icon_client.Image = (Image)resources.GetObject("icon_client.Image");
-            icon_client.Location = new Point(63, 107);
+            icon_client.Location = new Point(61, 106);
             icon_client.Name = "icon_client";
             icon_client.Size = new Size(70, 68);
             icon_client.SizeMode = PictureBoxSizeMode.StretchImage;
             icon_client.TabIndex = 6;
             icon_client.TabStop = false;
             // 
-            // pictureBox1
+            // icon_password
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(63, 213);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(70, 68);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
+            icon_password.Image = (Image)resources.GetObject("icon_password.Image");
+            icon_password.Location = new Point(61, 195);
+            icon_password.Name = "icon_password";
+            icon_password.Size = new Size(70, 68);
+            icon_password.SizeMode = PictureBoxSizeMode.StretchImage;
+            icon_password.TabIndex = 7;
+            icon_password.TabStop = false;
             // 
-            // button1
+            // btn_login
             // 
-            button1.BackColor = Color.Transparent;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Bahnschrift SemiCondensed", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(127, 310);
-            button1.Name = "button1";
-            button1.Size = new Size(134, 42);
-            button1.TabIndex = 8;
-            button1.Text = "Увійти";
-            button1.UseVisualStyleBackColor = false;
+            btn_login.BackColor = Color.Transparent;
+            btn_login.FlatStyle = FlatStyle.Popup;
+            btn_login.Font = new Font("Bahnschrift SemiCondensed", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_login.Location = new Point(133, 297);
+            btn_login.Name = "btn_login";
+            btn_login.Size = new Size(134, 42);
+            btn_login.TabIndex = 8;
+            btn_login.Text = "Увійти";
+            btn_login.UseVisualStyleBackColor = false;
+            btn_login.Click += btn_login_Click;
+            // 
+            // btn_back
+            // 
+            btn_back.BackgroundImage = (Image)resources.GetObject("btn_back.BackgroundImage");
+            btn_back.BackgroundImageLayout = ImageLayout.Stretch;
+            btn_back.FlatStyle = FlatStyle.Popup;
+            btn_back.Location = new Point(12, 323);
+            btn_back.Name = "btn_back";
+            btn_back.Size = new Size(42, 46);
+            btn_back.TabIndex = 10;
+            btn_back.UseVisualStyleBackColor = true;
+            btn_back.Click += btn_back_Click;
+            // 
+            // label_register
+            // 
+            label_register.AutoSize = true;
+            label_register.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Underline, GraphicsUnit.Point);
+            label_register.Location = new Point(141, 348);
+            label_register.Name = "label_register";
+            label_register.Size = new Size(118, 19);
+            label_register.TabIndex = 11;
+            label_register.Text = "Зареєструватися";
+            label_register.UseMnemonic = false;
+            label_register.Click += label_register_Click;
             // 
             // ClientAuthForm
             // 
@@ -129,11 +156,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDark;
             ClientSize = new Size(384, 381);
-            Controls.Add(button1);
-            Controls.Add(pictureBox1);
+            Controls.Add(label_register);
+            Controls.Add(btn_back);
+            Controls.Add(btn_login);
+            Controls.Add(icon_password);
             Controls.Add(icon_client);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(textBox_password);
+            Controls.Add(textBox_login);
             Controls.Add(panel1);
             Name = "ClientAuthForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -142,7 +171,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)icon_client).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)icon_password).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -152,10 +181,12 @@
         private Label label1;
         private PictureBox icon_logo;
         private Panel panel1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox textBox_login;
+        private TextBox textBox_password;
         private PictureBox icon_client;
-        private PictureBox pictureBox1;
-        private Button button1;
+        private PictureBox icon_password;
+        private Button btn_login;
+        private Button btn_back;
+        private Label label_register;
     }
 }
