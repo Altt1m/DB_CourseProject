@@ -32,14 +32,16 @@
             label_clientForm = new Label();
             panel1 = new Panel();
             icon_logo = new PictureBox();
-            dataGridView1 = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            dataGridView_client = new DataGridView();
+            btn_createConnectionRequest = new Button();
+            btn_createRepairRequest = new Button();
+            btn_editAccountDetails = new Button();
+            btn_payDebts = new Button();
+            btn_viewSettlements = new Button();
+            btn_viewAccountDetails = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)icon_logo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_client).BeginInit();
             SuspendLayout();
             // 
             // label_clientForm
@@ -73,51 +75,75 @@
             icon_logo.TabIndex = 1;
             icon_logo.TabStop = false;
             // 
-            // dataGridView1
+            // dataGridView_client
             // 
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(370, 77);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(539, 396);
-            dataGridView1.TabIndex = 5;
+            dataGridView_client.AllowUserToAddRows = false;
+            dataGridView_client.AllowUserToDeleteRows = false;
+            dataGridView_client.AllowUserToOrderColumns = true;
+            dataGridView_client.BackgroundColor = SystemColors.Control;
+            dataGridView_client.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView_client.Location = new Point(370, 77);
+            dataGridView_client.Name = "dataGridView_client";
+            dataGridView_client.ReadOnly = true;
+            dataGridView_client.RowTemplate.Height = 25;
+            dataGridView_client.Size = new Size(539, 396);
+            dataGridView_client.TabIndex = 5;
             // 
-            // button1
+            // btn_createConnectionRequest
             // 
-            button1.Location = new Point(32, 94);
-            button1.Name = "button1";
-            button1.Size = new Size(132, 60);
-            button1.TabIndex = 6;
-            button1.Text = "Створити запит на підключення";
-            button1.UseVisualStyleBackColor = true;
+            btn_createConnectionRequest.Location = new Point(32, 94);
+            btn_createConnectionRequest.Name = "btn_createConnectionRequest";
+            btn_createConnectionRequest.Size = new Size(132, 60);
+            btn_createConnectionRequest.TabIndex = 6;
+            btn_createConnectionRequest.Text = "Створити запит на підключення";
+            btn_createConnectionRequest.UseVisualStyleBackColor = true;
+            btn_createConnectionRequest.Click += btn_createConnectionRequest_Click;
             // 
-            // button2
+            // btn_createRepairRequest
             // 
-            button2.Location = new Point(196, 94);
-            button2.Name = "button2";
-            button2.Size = new Size(132, 60);
-            button2.TabIndex = 7;
-            button2.Text = "Створити запит на ремонтну роботу";
-            button2.UseVisualStyleBackColor = true;
+            btn_createRepairRequest.Location = new Point(196, 94);
+            btn_createRepairRequest.Name = "btn_createRepairRequest";
+            btn_createRepairRequest.Size = new Size(132, 60);
+            btn_createRepairRequest.TabIndex = 7;
+            btn_createRepairRequest.Text = "Створити запит на ремонтну роботу";
+            btn_createRepairRequest.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btn_editAccountDetails
             // 
-            button3.Location = new Point(32, 184);
-            button3.Name = "button3";
-            button3.Size = new Size(132, 60);
-            button3.TabIndex = 8;
-            button3.Text = "Змінити облікові дані";
-            button3.UseVisualStyleBackColor = true;
+            btn_editAccountDetails.Location = new Point(32, 278);
+            btn_editAccountDetails.Name = "btn_editAccountDetails";
+            btn_editAccountDetails.Size = new Size(132, 60);
+            btn_editAccountDetails.TabIndex = 8;
+            btn_editAccountDetails.Text = "Редагувати\r\nоблікові дані";
+            btn_editAccountDetails.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_payDebts
             // 
-            button4.Location = new Point(196, 184);
-            button4.Name = "button4";
-            button4.Size = new Size(132, 60);
-            button4.TabIndex = 9;
-            button4.Text = "Заборгованості";
-            button4.UseVisualStyleBackColor = true;
+            btn_payDebts.Location = new Point(196, 278);
+            btn_payDebts.Name = "btn_payDebts";
+            btn_payDebts.Size = new Size(132, 60);
+            btn_payDebts.TabIndex = 9;
+            btn_payDebts.Text = "Сплатити борг";
+            btn_payDebts.UseVisualStyleBackColor = true;
+            // 
+            // btn_viewSettlements
+            // 
+            btn_viewSettlements.Location = new Point(196, 184);
+            btn_viewSettlements.Name = "btn_viewSettlements";
+            btn_viewSettlements.Size = new Size(132, 60);
+            btn_viewSettlements.TabIndex = 10;
+            btn_viewSettlements.Text = "Продивитися розрахунки";
+            btn_viewSettlements.UseVisualStyleBackColor = true;
+            // 
+            // btn_viewAccountDetails
+            // 
+            btn_viewAccountDetails.Location = new Point(32, 184);
+            btn_viewAccountDetails.Name = "btn_viewAccountDetails";
+            btn_viewAccountDetails.Size = new Size(132, 60);
+            btn_viewAccountDetails.TabIndex = 11;
+            btn_viewAccountDetails.Text = "Продивитися облікові дані";
+            btn_viewAccountDetails.UseVisualStyleBackColor = true;
+            btn_viewAccountDetails.Click += btn_viewAccountDetails_Click;
             // 
             // ClientForm
             // 
@@ -125,11 +151,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 255, 192);
             ClientSize = new Size(921, 485);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
+            Controls.Add(btn_viewAccountDetails);
+            Controls.Add(btn_viewSettlements);
+            Controls.Add(btn_payDebts);
+            Controls.Add(btn_editAccountDetails);
+            Controls.Add(btn_createRepairRequest);
+            Controls.Add(btn_createConnectionRequest);
+            Controls.Add(dataGridView_client);
             Controls.Add(panel1);
             Name = "ClientForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -137,7 +165,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)icon_logo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_client).EndInit();
             ResumeLayout(false);
         }
 
@@ -146,10 +174,12 @@
         private Label label_clientForm;
         private Panel panel1;
         private PictureBox icon_logo;
-        private DataGridView dataGridView1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private DataGridView dataGridView_client;
+        private Button btn_createConnectionRequest;
+        private Button btn_createRepairRequest;
+        private Button btn_editAccountDetails;
+        private Button btn_payDebts;
+        private Button btn_viewSettlements;
+        private Button btn_viewAccountDetails;
     }
 }

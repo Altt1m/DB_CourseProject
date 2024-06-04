@@ -71,12 +71,19 @@ namespace WinFormsApp1
 
             SqlConnection connection = db.GetConnection();
 
-            string insertQuery = $"INSERT INTO Accounts (Login, Password, IsAdmin) " +
-                           $"VALUES ('{clientLogin}', '{clientPass}', 0) " +
+            string selectClientsQuery = $"SELECT IDENT_CURRENT('Clients')";
+            SqlCommand selectCommand = new SqlCommand(selectClientsQuery, connection);
 
-                           $"INSERT INTO Clients (FirstName, MiddleName, LastName, Email, PhoneNumber, Address) " +
-                           $"VALUES ('{clientFirstName}', '{clientMiddleName}', '{clientLastName}', " +
-                           $"'{clientEmail}', '{clientPhoneNumber}', '')";
+            db.OpenConnection(connection);
+            int clientId = (int)(decimal)selectCommand.ExecuteScalar() + 1;
+            db.CloseConnection(connection);
+
+            string insertQuery = $"INSERT INTO Clients (FirstName, MiddleName, LastName, Email, PhoneNumber, Address) " +
+                               $"VALUES ('{clientFirstName}', '{clientMiddleName}', '{clientLastName}', " +
+                               $"'{clientEmail}', '{clientPhoneNumber}', '')" +
+
+                               $"INSERT INTO Accounts (Login, Password, IsAdmin, ClientId) " +
+                               $"VALUES ('{clientLogin}', '{clientPass}', 0, {clientId})";
 
             SqlTransaction transaction = null;
             try
@@ -90,13 +97,13 @@ namespace WinFormsApp1
 
                 transaction.Commit();
 
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                DataTable table = new DataTable();
-
                 string selectQuery = $"SELECT Id, Login, Password, IsAdmin FROM Accounts" +
                             $" WHERE Login='{clientLogin}' AND Password='{clientPass}' AND IsAdmin=0";
 
-                SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                selectCommand = new SqlCommand(selectQuery, connection);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                DataTable table = new DataTable();
 
                 adapter.SelectCommand = selectCommand;
                 adapter.Fill(table);
@@ -105,8 +112,8 @@ namespace WinFormsApp1
 
                 string clientQuery = $"SELECT Id FROM Clients WHERE Id = {userId}";
                 SqlCommand clientCommand = new SqlCommand(clientQuery, connection);
-                int clientId = (int)clientCommand.ExecuteScalar();
-                
+                clientId = (int)clientCommand.ExecuteScalar();
+
                 db.CloseConnection(connection);
 
                 ClientForm client = new ClientForm(clientId);

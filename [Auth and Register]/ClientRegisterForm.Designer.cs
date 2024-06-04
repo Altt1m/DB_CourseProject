@@ -89,6 +89,7 @@
             textBox_login.Name = "textBox_login";
             textBox_login.Size = new Size(137, 27);
             textBox_login.TabIndex = 5;
+            textBox_login.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_password
             // 
@@ -97,6 +98,7 @@
             textBox_password.Name = "textBox_password";
             textBox_password.Size = new Size(137, 27);
             textBox_password.TabIndex = 6;
+            textBox_password.TextAlign = HorizontalAlignment.Center;
             textBox_password.UseSystemPasswordChar = true;
             // 
             // textBox_firstName
@@ -106,6 +108,7 @@
             textBox_firstName.Name = "textBox_firstName";
             textBox_firstName.Size = new Size(137, 27);
             textBox_firstName.TabIndex = 7;
+            textBox_firstName.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_lastName
             // 
@@ -114,6 +117,7 @@
             textBox_lastName.Name = "textBox_lastName";
             textBox_lastName.Size = new Size(137, 27);
             textBox_lastName.TabIndex = 8;
+            textBox_lastName.TextAlign = HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -192,6 +196,7 @@
             textBox_middleName.Name = "textBox_middleName";
             textBox_middleName.Size = new Size(137, 27);
             textBox_middleName.TabIndex = 16;
+            textBox_middleName.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_email
             // 
@@ -200,6 +205,7 @@
             textBox_email.Name = "textBox_email";
             textBox_email.Size = new Size(137, 27);
             textBox_email.TabIndex = 17;
+            textBox_email.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_phoneNumber
             // 
@@ -208,6 +214,7 @@
             textBox_phoneNumber.Name = "textBox_phoneNumber";
             textBox_phoneNumber.Size = new Size(137, 27);
             textBox_phoneNumber.TabIndex = 18;
+            textBox_phoneNumber.TextAlign = HorizontalAlignment.Center;
             // 
             // btn_register
             // 

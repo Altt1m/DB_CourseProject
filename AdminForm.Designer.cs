@@ -42,15 +42,15 @@
             dataGridView1.Size = new Size(854, 581);
             dataGridView1.TabIndex = 0;
             // 
-            // Form1
+            // AdminForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Highlight;
+            BackColor = Color.FromArgb(255, 255, 192);
             ClientSize = new Size(1264, 681);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "Form1";
+            Name = "AdminForm";
             Text = "ManagerForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

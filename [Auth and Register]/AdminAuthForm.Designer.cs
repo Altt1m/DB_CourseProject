@@ -82,6 +82,7 @@
             textBox_login.Name = "textBox_login";
             textBox_login.Size = new Size(133, 29);
             textBox_login.TabIndex = 4;
+            textBox_login.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_password
             // 
@@ -90,6 +91,7 @@
             textBox_password.Name = "textBox_password";
             textBox_password.Size = new Size(133, 29);
             textBox_password.TabIndex = 5;
+            textBox_password.TextAlign = HorizontalAlignment.Center;
             textBox_password.UseSystemPasswordChar = true;
             // 
             // icon_password
@@ -150,6 +152,7 @@
             Controls.Add(textBox_login);
             Controls.Add(panel1);
             Controls.Add(icon_admin);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "AdminAuthForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Авторизація адміна";
