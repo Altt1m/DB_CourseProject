@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace WinFormsApp1
@@ -43,8 +44,8 @@ namespace WinFormsApp1
 
             SqlConnection connection = db.GetConnection();
 
-            string requestQuery = $"INSERT INTO ProvidedServices (ClientId, Status, Title, Address, DateOfStart)" +
-                   $"VALUES ({clientId}, 'Опрацьовується', 'Підключення до мережі', '{requestAddress}', '{requestDateTime}')";
+            string requestQuery = "INSERT INTO ProvidedServices (ClientId, Status, Title, Address, DateOfStart) " +
+                      "VALUES (@ClientId, 'Опрацьовується', 'Підключення до мережі', @Address, @DateOfStart)";
 
             SqlTransaction transaction = null;
             try
@@ -53,6 +54,10 @@ namespace WinFormsApp1
                 transaction = connection.BeginTransaction();
 
                 SqlCommand requestCommand = new SqlCommand(requestQuery, connection, transaction);
+                // Додавання параметрів
+                requestCommand.Parameters.AddWithValue("@ClientId", clientId);
+                requestCommand.Parameters.AddWithValue("@Address", requestAddress);
+                requestCommand.Parameters.AddWithValue("@DateOfStart", requestDateTime);
 
                 requestCommand.ExecuteNonQuery();
 
@@ -71,6 +76,7 @@ namespace WinFormsApp1
                 db.CloseConnection(connection);
                 this.Hide();
                 this.Close();
+                return;
             }
             catch (Exception ex)
             {
@@ -79,7 +85,9 @@ namespace WinFormsApp1
                 db.CloseConnection(connection);
                 this.Hide();
                 this.Close();
+                return;
             }
+
 
 
         }

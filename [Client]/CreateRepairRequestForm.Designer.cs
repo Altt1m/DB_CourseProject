@@ -1,6 +1,6 @@
-﻿namespace WinFormsApp1
+﻿namespace WinFormsApp1._Client_
 {
-    partial class CreateConnectionRequestForm
+    partial class CreateRepairRequestForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateConnectionRequestForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateRepairRequestForm));
             icon_logo = new PictureBox();
             label_register = new Label();
             panel1 = new Panel();
-            textBox_Address = new TextBox();
-            label_Address = new Label();
+            btn_createRepairRequest = new Button();
             label_DateOfStart = new Label();
             dateTimePicker_Begin = new DateTimePicker();
-            btn_createConnectionRequest = new Button();
+            label1 = new Label();
+            textBox_Description = new TextBox();
             ((System.ComponentModel.ISupportInitialize)icon_logo).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -56,12 +56,12 @@
             // 
             label_register.AutoSize = true;
             label_register.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label_register.Location = new Point(155, 11);
+            label_register.Location = new Point(221, 11);
             label_register.Name = "label_register";
             label_register.RightToLeft = RightToLeft.No;
             label_register.Size = new Size(184, 58);
             label_register.TabIndex = 0;
-            label_register.Text = "Створення запиту\r\nна підключення";
+            label_register.Text = "Створення запиту\r\nна ремонт";
             label_register.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel1
@@ -71,72 +71,72 @@
             panel1.Controls.Add(label_register);
             panel1.Location = new Point(-9, -8);
             panel1.Name = "panel1";
-            panel1.Size = new Size(815, 75);
-            panel1.TabIndex = 5;
+            panel1.Size = new Size(727, 75);
+            panel1.TabIndex = 6;
             // 
-            // textBox_Address
+            // btn_createRepairRequest
             // 
-            textBox_Address.Location = new Point(227, 102);
-            textBox_Address.Name = "textBox_Address";
-            textBox_Address.Size = new Size(151, 23);
-            textBox_Address.TabIndex = 6;
-            textBox_Address.TextAlign = HorizontalAlignment.Center;
-            // 
-            // label_Address
-            // 
-            label_Address.AutoSize = true;
-            label_Address.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label_Address.Location = new Point(81, 96);
-            label_Address.Name = "label_Address";
-            label_Address.Size = new Size(83, 29);
-            label_Address.TabIndex = 10;
-            label_Address.Text = "Адреса";
+            btn_createRepairRequest.FlatStyle = FlatStyle.Popup;
+            btn_createRepairRequest.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_createRepairRequest.Location = new Point(241, 356);
+            btn_createRepairRequest.Name = "btn_createRepairRequest";
+            btn_createRepairRequest.Size = new Size(126, 49);
+            btn_createRepairRequest.TabIndex = 21;
+            btn_createRepairRequest.Text = "Створити";
+            btn_createRepairRequest.UseVisualStyleBackColor = true;
+            btn_createRepairRequest.Click += btn_createRepairRequest_Click;
             // 
             // label_DateOfStart
             // 
             label_DateOfStart.AutoSize = true;
             label_DateOfStart.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label_DateOfStart.Location = new Point(58, 168);
+            label_DateOfStart.Location = new Point(26, 278);
             label_DateOfStart.Name = "label_DateOfStart";
             label_DateOfStart.Size = new Size(129, 29);
-            label_DateOfStart.TabIndex = 11;
+            label_DateOfStart.TabIndex = 22;
             label_DateOfStart.Text = "Час початку";
             // 
             // dateTimePicker_Begin
             // 
-            dateTimePicker_Begin.Location = new Point(227, 174);
+            dateTimePicker_Begin.Location = new Point(207, 284);
             dateTimePicker_Begin.Name = "dateTimePicker_Begin";
             dateTimePicker_Begin.Size = new Size(151, 23);
-            dateTimePicker_Begin.TabIndex = 12;
+            dateTimePicker_Begin.TabIndex = 23;
             // 
-            // btn_createConnectionRequest
+            // label1
             // 
-            btn_createConnectionRequest.FlatStyle = FlatStyle.Popup;
-            btn_createConnectionRequest.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_createConnectionRequest.Location = new Point(173, 235);
-            btn_createConnectionRequest.Name = "btn_createConnectionRequest";
-            btn_createConnectionRequest.Size = new Size(126, 49);
-            btn_createConnectionRequest.TabIndex = 20;
-            btn_createConnectionRequest.Text = "Створити";
-            btn_createConnectionRequest.UseVisualStyleBackColor = true;
-            btn_createConnectionRequest.Click += btn_createConnectionRequest_Click;
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(19, 100);
+            label1.Name = "label1";
+            label1.Size = new Size(182, 58);
+            label1.TabIndex = 24;
+            label1.Text = "Опис проблеми\r\n(до 300 символів)";
             // 
-            // CreateConnectionRequestForm
+            // textBox_Description
+            // 
+            textBox_Description.Location = new Point(207, 100);
+            textBox_Description.Multiline = true;
+            textBox_Description.Name = "textBox_Description";
+            textBox_Description.Size = new Size(348, 135);
+            textBox_Description.TabIndex = 25;
+            // 
+            // CreateRepairRequestForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(449, 296);
-            Controls.Add(btn_createConnectionRequest);
+            ClientSize = new Size(600, 417);
+            Controls.Add(textBox_Description);
+            Controls.Add(label1);
             Controls.Add(dateTimePicker_Begin);
             Controls.Add(label_DateOfStart);
-            Controls.Add(label_Address);
-            Controls.Add(textBox_Address);
+            Controls.Add(btn_createRepairRequest);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Name = "CreateConnectionRequestForm";
+            Name = "CreateRepairRequestForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "CreateConnectionRequestForm";
+            Text = "CreateRepairRequestForm";
             ((System.ComponentModel.ISupportInitialize)icon_logo).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -149,10 +149,10 @@
         private PictureBox icon_logo;
         private Label label_register;
         private Panel panel1;
-        private TextBox textBox_Address;
-        private Label label_Address;
+        private Button btn_createRepairRequest;
         private Label label_DateOfStart;
         private DateTimePicker dateTimePicker_Begin;
-        private Button btn_createConnectionRequest;
+        private Label label1;
+        private TextBox textBox_Description;
     }
 }

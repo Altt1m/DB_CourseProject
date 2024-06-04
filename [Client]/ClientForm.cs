@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp1._Client_;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WinFormsApp1
@@ -27,17 +28,29 @@ namespace WinFormsApp1
             DataTable table = new DataTable();
 
             SqlConnection connection = db.GetConnection();
-            string query = $"SELECT Id FROM ProvidedServices" +
+
+            string connectionCheckQuery = $"SELECT Id FROM ProvidedServices" +
                             $" WHERE Title='Підключення до мережі' AND ClientId='{clientId}'";
 
-            SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand connectionCheckCommand = new SqlCommand(connectionCheckQuery, connection);
 
-            adapter.SelectCommand = command;
+            adapter.SelectCommand = connectionCheckCommand;
             adapter.Fill(table);
 
             if (table.Rows.Count >= 1)
             {
                 btn_createConnectionRequest.Enabled = false;
+            }
+
+            string addressCheckQuery = $"SELECT Address FROM Clients WHERE Id = {clientId}";
+            SqlCommand addressCheckCommand = new SqlCommand(addressCheckQuery, connection);
+
+            adapter.SelectCommand = addressCheckCommand;
+            adapter.Fill(table);
+
+            if (table.Rows.Count >= 1)
+            {
+                btn_createRepairRequest.Enabled = true;
             }
         }
 
@@ -51,6 +64,11 @@ namespace WinFormsApp1
             dataGridView_client.Columns.Clear(); // Очистити стовпці
 
             ViewAccountDetails(dataGridView_client);
+        }
+
+        private void btn_viewAllRequests_Click(object sender, EventArgs e)
+        {
+
         }
 
         public void ViewAccountDetails(DataGridView dgw)
@@ -82,6 +100,12 @@ namespace WinFormsApp1
         {
             CreateConnectionRequestForm connectionRequest = new CreateConnectionRequestForm(clientId, this);
             connectionRequest.ShowDialog();
+        }
+
+        private void btn_createRepairRequest_Click(object sender, EventArgs e)
+        {
+            CreateRepairRequestForm repairRequest = new CreateRepairRequestForm(clientId);
+            repairRequest.ShowDialog();
         }
     }
 }

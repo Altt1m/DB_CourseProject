@@ -107,6 +107,7 @@
             btn_createRepairRequest.TabIndex = 7;
             btn_createRepairRequest.Text = "Створити запит на ремонтну роботу";
             btn_createRepairRequest.UseVisualStyleBackColor = true;
+            btn_createRepairRequest.Click += btn_createRepairRequest_Click;
             // 
             // btn_editAccountDetails
             // 
