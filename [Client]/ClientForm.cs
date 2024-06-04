@@ -59,16 +59,40 @@ namespace WinFormsApp1
             btn_createConnectionRequest.Enabled = false;
         }
 
+        private void btn_viewAllRequests_Click(object sender, EventArgs e)
+        {
+            ViewAllRequests(dataGridView_client);
+        }
+
+        public void ViewAllRequests(DataGridView dgw)
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                db.OpenConnection(connection);
+                string query = $"SELECT " +
+                    $"Status AS 'Стан'," +
+                    $"Title AS 'Опис'," +
+                    $"Address AS 'Адреса'," +
+                    $"DateOfStart AS 'Дата початку'," +
+                    $"DateOfFinish AS 'Дата завершення'," +
+                    $"Price AS 'Вартість' " +
+                    $"FROM ProvidedServices WHERE ClientId = {clientId}";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable(); // Створимо новий DataTable для збереження результатів запиту
+
+                adapter.Fill(dataTable); // Заповнимо DataTable результатами запиту
+                dgw.DataSource = dataTable; // Прив'яжемо DataTable до DataGridView
+
+                db.CloseConnection(connection);
+            }
+        }
+
         private void btn_viewAccountDetails_Click(object sender, EventArgs e)
         {
             dataGridView_client.Columns.Clear(); // Очистити стовпці
 
             ViewAccountDetails(dataGridView_client);
-        }
-
-        private void btn_viewAllRequests_Click(object sender, EventArgs e)
-        {
-
         }
 
         public void ViewAccountDetails(DataGridView dgw)

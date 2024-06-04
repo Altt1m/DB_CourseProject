@@ -39,6 +39,7 @@
             btn_payDebts = new Button();
             btn_viewSettlements = new Button();
             btn_viewAccountDetails = new Button();
+            btn_viewAllRequests = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)icon_logo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_client).BeginInit();
@@ -111,7 +112,7 @@
             // 
             // btn_editAccountDetails
             // 
-            btn_editAccountDetails.Location = new Point(32, 278);
+            btn_editAccountDetails.Location = new Point(32, 413);
             btn_editAccountDetails.Name = "btn_editAccountDetails";
             btn_editAccountDetails.Size = new Size(132, 60);
             btn_editAccountDetails.TabIndex = 8;
@@ -129,7 +130,7 @@
             // 
             // btn_viewSettlements
             // 
-            btn_viewSettlements.Location = new Point(196, 184);
+            btn_viewSettlements.Location = new Point(32, 278);
             btn_viewSettlements.Name = "btn_viewSettlements";
             btn_viewSettlements.Size = new Size(132, 60);
             btn_viewSettlements.TabIndex = 10;
@@ -142,9 +143,19 @@
             btn_viewAccountDetails.Name = "btn_viewAccountDetails";
             btn_viewAccountDetails.Size = new Size(132, 60);
             btn_viewAccountDetails.TabIndex = 11;
-            btn_viewAccountDetails.Text = "Продивитися облікові дані";
+            btn_viewAccountDetails.Text = "Мої облікові дані";
             btn_viewAccountDetails.UseVisualStyleBackColor = true;
             btn_viewAccountDetails.Click += btn_viewAccountDetails_Click;
+            // 
+            // btn_viewAllRequests
+            // 
+            btn_viewAllRequests.Location = new Point(196, 184);
+            btn_viewAllRequests.Name = "btn_viewAllRequests";
+            btn_viewAllRequests.Size = new Size(132, 60);
+            btn_viewAllRequests.TabIndex = 12;
+            btn_viewAllRequests.Text = "Всі запити";
+            btn_viewAllRequests.UseVisualStyleBackColor = true;
+            btn_viewAllRequests.Click += btn_viewAllRequests_Click;
             // 
             // ClientForm
             // 
@@ -152,6 +163,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 255, 192);
             ClientSize = new Size(921, 485);
+            Controls.Add(btn_viewAllRequests);
             Controls.Add(btn_viewAccountDetails);
             Controls.Add(btn_viewSettlements);
             Controls.Add(btn_payDebts);
@@ -182,5 +194,6 @@
         private Button btn_payDebts;
         private Button btn_viewSettlements;
         private Button btn_viewAccountDetails;
+        private Button btn_viewAllRequests;
     }
 }
