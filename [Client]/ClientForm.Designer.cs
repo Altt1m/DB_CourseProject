@@ -136,6 +136,7 @@
             btn_viewSettlements.TabIndex = 10;
             btn_viewSettlements.Text = "Продивитися розрахунки";
             btn_viewSettlements.UseVisualStyleBackColor = true;
+            btn_viewSettlements.Click += btn_viewSettlements_Click;
             // 
             // btn_viewAccountDetails
             // 

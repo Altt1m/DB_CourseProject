@@ -88,6 +88,33 @@ namespace WinFormsApp1
             }
         }
 
+        private void btn_viewSettlements_Click(object sender, EventArgs e)
+        {
+            ViewAllSettlements(dataGridView_client);
+        }
+
+        public void ViewAllSettlements(DataGridView dgw)
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                db.OpenConnection(connection);
+                string query = $"SELECT " +
+                    $"Status AS 'Стан'," +
+                    $"DateOfCreation AS 'Дата створення'," +
+                    $"DateOfSettlement AS 'Дата сплати'," +
+                    $"TotalSum AS 'Сума' " +
+                    $"FROM ClientsSettlements WHERE ClientId = {clientId}";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable(); // Створимо новий DataTable для збереження результатів запиту
+
+                adapter.Fill(dataTable); // Заповнимо DataTable результатами запиту
+                dgw.DataSource = dataTable; // Прив'яжемо DataTable до DataGridView
+
+                db.CloseConnection(connection);
+            }
+        }
+
         private void btn_viewAccountDetails_Click(object sender, EventArgs e)
         {
             dataGridView_client.Columns.Clear(); // Очистити стовпці
