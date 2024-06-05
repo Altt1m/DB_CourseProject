@@ -102,7 +102,7 @@ namespace WinFormsApp1
                     $"Status AS 'Стан'," +
                     $"DateOfCreation AS 'Дата створення'," +
                     $"DateOfSettlement AS 'Дата сплати'," +
-                    $"TotalSum AS 'Сума' " +
+                    $"CONCAT(FORMAT(TotalSum, 'N2'), ' грн.') AS 'Сума' " + // Форматування суми з двома десятковими знаками і додавання "грн."
                     $"FROM ClientsSettlements WHERE ClientId = {clientId}";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
@@ -114,6 +114,7 @@ namespace WinFormsApp1
                 db.CloseConnection(connection);
             }
         }
+
 
         private void btn_viewAccountDetails_Click(object sender, EventArgs e)
         {
