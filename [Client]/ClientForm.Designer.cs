@@ -118,6 +118,7 @@
             btn_editAccountDetails.TabIndex = 8;
             btn_editAccountDetails.Text = "Редагувати\r\nоблікові дані";
             btn_editAccountDetails.UseVisualStyleBackColor = true;
+            btn_editAccountDetails.Click += btn_editAccountDetails_Click;
             // 
             // btn_payDebts
             // 

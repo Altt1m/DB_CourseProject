@@ -159,5 +159,11 @@ namespace WinFormsApp1
             CreateRepairRequestForm repairRequest = new CreateRepairRequestForm(clientId);
             repairRequest.ShowDialog();
         }
+
+        private void btn_editAccountDetails_Click(object sender, EventArgs e)
+        {
+            EditAccountDetailsForm editDetails = new EditAccountDetailsForm(clientId);
+            editDetails.ShowDialog();
+        }
     }
 }

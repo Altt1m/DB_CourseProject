@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateRepairRequestForm));
             icon_logo = new PictureBox();
-            label_register = new Label();
+            label_repairRequest = new Label();
             panel1 = new Panel();
             btn_createRepairRequest = new Button();
             label_DateOfStart = new Label();
@@ -52,26 +52,26 @@
             icon_logo.TabIndex = 1;
             icon_logo.TabStop = false;
             // 
-            // label_register
+            // label_repairRequest
             // 
-            label_register.AutoSize = true;
-            label_register.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label_register.Location = new Point(221, 11);
-            label_register.Name = "label_register";
-            label_register.RightToLeft = RightToLeft.No;
-            label_register.Size = new Size(184, 58);
-            label_register.TabIndex = 0;
-            label_register.Text = "Створення запиту\r\nна ремонт";
-            label_register.TextAlign = ContentAlignment.MiddleCenter;
+            label_repairRequest.AutoSize = true;
+            label_repairRequest.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label_repairRequest.Location = new Point(221, 11);
+            label_repairRequest.Name = "label_repairRequest";
+            label_repairRequest.RightToLeft = RightToLeft.No;
+            label_repairRequest.Size = new Size(184, 58);
+            label_repairRequest.TabIndex = 0;
+            label_repairRequest.Text = "Створення запиту\r\nна ремонт";
+            label_repairRequest.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(128, 255, 255);
             panel1.Controls.Add(icon_logo);
-            panel1.Controls.Add(label_register);
+            panel1.Controls.Add(label_repairRequest);
             panel1.Location = new Point(-9, -8);
             panel1.Name = "panel1";
-            panel1.Size = new Size(727, 75);
+            panel1.Size = new Size(614, 75);
             panel1.TabIndex = 6;
             // 
             // btn_createRepairRequest
@@ -147,7 +147,7 @@
         #endregion
 
         private PictureBox icon_logo;
-        private Label label_register;
+        private Label label_repairRequest;
         private Panel panel1;
         private Button btn_createRepairRequest;
         private Label label_DateOfStart;
