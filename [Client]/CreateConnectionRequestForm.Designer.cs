@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateConnectionRequestForm));
             icon_logo = new PictureBox();
-            label_register = new Label();
+            label_createConnectionRequest = new Label();
             panel1 = new Panel();
             textBox_Address = new TextBox();
             label_Address = new Label();
@@ -52,23 +52,23 @@
             icon_logo.TabIndex = 1;
             icon_logo.TabStop = false;
             // 
-            // label_register
+            // label_createConnectionRequest
             // 
-            label_register.AutoSize = true;
-            label_register.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label_register.Location = new Point(155, 11);
-            label_register.Name = "label_register";
-            label_register.RightToLeft = RightToLeft.No;
-            label_register.Size = new Size(184, 58);
-            label_register.TabIndex = 0;
-            label_register.Text = "Створення запиту\r\nна підключення";
-            label_register.TextAlign = ContentAlignment.MiddleCenter;
+            label_createConnectionRequest.AutoSize = true;
+            label_createConnectionRequest.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label_createConnectionRequest.Location = new Point(155, 11);
+            label_createConnectionRequest.Name = "label_createConnectionRequest";
+            label_createConnectionRequest.RightToLeft = RightToLeft.No;
+            label_createConnectionRequest.Size = new Size(184, 58);
+            label_createConnectionRequest.TabIndex = 0;
+            label_createConnectionRequest.Text = "Створення запиту\r\nна підключення";
+            label_createConnectionRequest.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(128, 255, 255);
             panel1.Controls.Add(icon_logo);
-            panel1.Controls.Add(label_register);
+            panel1.Controls.Add(label_createConnectionRequest);
             panel1.Location = new Point(-9, -8);
             panel1.Name = "panel1";
             panel1.Size = new Size(463, 75);
@@ -147,7 +147,7 @@
         #endregion
 
         private PictureBox icon_logo;
-        private Label label_register;
+        private Label label_createConnectionRequest;
         private Panel panel1;
         private TextBox textBox_Address;
         private Label label_Address;

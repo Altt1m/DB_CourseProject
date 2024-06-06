@@ -120,6 +120,7 @@
             btn_formConnectionRequest.TabIndex = 11;
             btn_formConnectionRequest.Text = "Оформити підключення";
             btn_formConnectionRequest.UseVisualStyleBackColor = true;
+            btn_formConnectionRequest.Click += btn_formConnectionRequest_Click;
             // 
             // btn_formRepairRequest
             // 
@@ -129,6 +130,7 @@
             btn_formRepairRequest.TabIndex = 12;
             btn_formRepairRequest.Text = "Оформити ремонт";
             btn_formRepairRequest.UseVisualStyleBackColor = true;
+            btn_formRepairRequest.Click += btn_formRepairRequest_Click;
             // 
             // btn_purchaseMaterials
             // 

@@ -1,5 +1,6 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
+using WinFormsApp1._Admin_;
 
 namespace WinFormsApp1
 {
@@ -82,6 +83,18 @@ namespace WinFormsApp1
 
                 db.CloseConnection(connection);
             }
+        }
+
+        private void btn_formConnectionRequest_Click(object sender, EventArgs e)
+        {
+            ChooseRequestIdForm requestId = new ChooseRequestIdForm("connection");
+            requestId.ShowDialog();
+        }
+
+        private void btn_formRepairRequest_Click(object sender, EventArgs e)
+        {
+            ChooseRequestIdForm requestId = new ChooseRequestIdForm("repair");
+            requestId.ShowDialog();
         }
     }
 }
