@@ -139,7 +139,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "EditAccountDetailsForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "EditAccountDetailsForm";
+            Text = "Редагувати облікові дані";
             ((System.ComponentModel.ISupportInitialize)icon_logo).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -136,7 +136,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "CreateConnectionRequestForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "CreateConnectionRequestForm";
+            Text = "Створити запит на підключення";
             ((System.ComponentModel.ISupportInitialize)icon_logo).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

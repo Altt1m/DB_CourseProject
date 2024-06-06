@@ -136,7 +136,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "CreateRepairRequestForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "CreateRepairRequestForm";
+            Text = "Створити запит на ремонт";
             ((System.ComponentModel.ISupportInitialize)icon_logo).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
