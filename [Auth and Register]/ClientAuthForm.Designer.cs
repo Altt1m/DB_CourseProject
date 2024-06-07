@@ -166,6 +166,8 @@
             Controls.Add(textBox_password);
             Controls.Add(textBox_login);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ClientAuthForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Авторизація клієнта";

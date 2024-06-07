@@ -114,6 +114,7 @@
             Controls.Add(textBox_Id);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ChooseRequestIdForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Обрати ID запиту";

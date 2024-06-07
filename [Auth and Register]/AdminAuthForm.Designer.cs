@@ -153,6 +153,7 @@
             Controls.Add(panel1);
             Controls.Add(icon_admin);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "AdminAuthForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Авторизація адміна";

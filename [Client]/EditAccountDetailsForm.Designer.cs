@@ -137,6 +137,7 @@
             Controls.Add(label6);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "EditAccountDetailsForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Редагувати облікові дані";

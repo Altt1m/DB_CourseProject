@@ -141,6 +141,7 @@
             btn_purchaseMaterials.TabIndex = 13;
             btn_purchaseMaterials.Text = "Закупити матеріали";
             btn_purchaseMaterials.UseVisualStyleBackColor = true;
+            btn_purchaseMaterials.Click += btn_purchaseMaterials_Click;
             // 
             // btn_purchases
             // 
@@ -150,10 +151,11 @@
             btn_purchases.TabIndex = 14;
             btn_purchases.Text = "Закупівлі";
             btn_purchases.UseVisualStyleBackColor = true;
+            btn_purchases.Click += btn_purchases_Click;
             // 
             // btn_other
             // 
-            btn_other.Location = new Point(29, 416);
+            btn_other.Location = new Point(185, 339);
             btn_other.Name = "btn_other";
             btn_other.Size = new Size(132, 60);
             btn_other.TabIndex = 15;
@@ -187,6 +189,7 @@
             Controls.Add(panel1);
             Controls.Add(dataGridView_admin);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "AdminForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Середовище адміністратора";

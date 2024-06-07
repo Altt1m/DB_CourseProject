@@ -134,6 +134,7 @@
             Controls.Add(textBox_Address);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "CreateConnectionRequestForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Створити запит на підключення";

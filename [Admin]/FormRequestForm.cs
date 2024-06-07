@@ -75,7 +75,7 @@ namespace WinFormsApp1._Admin_
                 MessageBox.Show("Дата початку не може бути меншою за сьогоднішню дату.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (dateTimePicker_dateOfFinish.Value < dateTimePicker_dateOfStart.Value) 
+            else if (dateTimePicker_dateOfFinish.Value < dateTimePicker_dateOfStart.Value)
             {
                 MessageBox.Show("Дата завершення не може бути меншою за дату початку.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -155,11 +155,32 @@ namespace WinFormsApp1._Admin_
                 }
             }
 
-            if(requestType == "connection") UpdateClientAddress(textBox_address.Text);
+            if (requestType == "connection") UpdateClientAddress(textBox_address.Text);
 
+            CreateSettlement(Convert.ToInt32(textBox_clientId.Text), Convert.ToInt32(textBox_price.Text));
             CreatePayments(selectedTeamId);
 
             this.Hide(); this.Close();
+        }
+
+        private void CreateSettlement(int clientId, decimal price)
+        {
+            string query = $@"
+            INSERT INTO ClientsSettlements (ClientId, Status, DateOfCreation, TotalSum)
+            VALUES ({clientId}, 'Борг', @Date, {price})";
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                db.OpenConnection(connection);
+
+                SqlCommand updateCommand = new SqlCommand(query, connection);
+
+                updateCommand.Parameters.AddWithValue("@Date", dateTimePicker_dateOfFinish.Value);
+
+                updateCommand.ExecuteNonQuery();
+
+                db.CloseConnection(connection);
+            }
         }
 
         private void CreatePayments(int selectedTeamId)
@@ -286,7 +307,7 @@ namespace WinFormsApp1._Admin_
                 command.Parameters.AddWithValue("@DateOfPayment", DBNull.Value);
                 command.Parameters.AddWithValue("@TotalSum", totalSum);
 
-                
+
                 command.ExecuteNonQuery();
 
                 db.CloseConnection(connection);

@@ -250,6 +250,8 @@
             Controls.Add(textBox_password);
             Controls.Add(textBox_login);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ClientRegisterForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Реєстрація";

@@ -134,6 +134,7 @@
             Controls.Add(btn_createRepairRequest);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "CreateRepairRequestForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Створити запит на ремонт";

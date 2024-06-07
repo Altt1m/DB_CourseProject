@@ -130,6 +130,7 @@
             Controls.Add(icon_client);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "RoleSelectionForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Оберіть свою роль";

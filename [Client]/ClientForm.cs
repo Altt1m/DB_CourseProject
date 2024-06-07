@@ -163,5 +163,50 @@ namespace WinFormsApp1
             EditAccountDetailsForm editDetails = new EditAccountDetailsForm(clientId);
             editDetails.ShowDialog();
         }
+
+        private void btn_payDebts_Click(object sender, EventArgs e)
+        {
+            PayDebts(clientId);
+        }
+
+        private void PayDebts(int clientId)
+        {
+            decimal total;
+
+            string selectQuery = @"
+            SELECT SUM(TotalSum) AS TotalSumTotal
+            FROM ClientsSettlements 
+            WHERE DateOfSettlement IS NULL";
+
+            string updateQuery = $@"
+                UPDATE ClientsSettlements
+                SET DateOfSettlement = @Date
+                WHERE DateOfSettlement IS NULL";
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                db.OpenConnection(connection);
+
+                SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+                updateCommand.Parameters.AddWithValue("@Date", DateTime.Today);
+
+                total = (decimal)selectCommand.ExecuteScalar();
+
+                if (total > 0)
+                {
+                    updateCommand.ExecuteNonQuery();
+
+                    MessageBox.Show($"Ви сплатили {total:F2} грн.", "Борг", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    db.CloseConnection(connection);
+                }
+                else
+                {
+                    MessageBox.Show($"У вас немає боргів", "Борг", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.CloseConnection(connection);
+                }
+
+            }
+        }
     }
 }

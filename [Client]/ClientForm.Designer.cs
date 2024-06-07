@@ -129,6 +129,7 @@
             btn_payDebts.TabIndex = 9;
             btn_payDebts.Text = "Сплатити борг";
             btn_payDebts.UseVisualStyleBackColor = true;
+            btn_payDebts.Click += btn_payDebts_Click;
             // 
             // btn_viewSettlements
             // 
@@ -175,6 +176,8 @@
             Controls.Add(btn_createConnectionRequest);
             Controls.Add(dataGridView_client);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ClientForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Особистий кабінет";

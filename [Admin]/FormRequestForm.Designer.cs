@@ -337,6 +337,7 @@
             Controls.Add(label_Id);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "FormRequestForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Оформити запит";

@@ -142,5 +142,40 @@ namespace WinFormsApp1
             }
 
         }
+
+        private void btn_purchases_Click(object sender, EventArgs e)
+        {
+            ViewPurchases(dataGridView_admin);
+        }
+
+        private void ViewPurchases(DataGridView dgw)
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                db.OpenConnection(connection);
+                string query = $@"
+                SELECT 
+                    MaterialId AS 'ID матеріалу',
+                    SupplierId AS 'ID постачальника',
+                    MaterialsCount AS 'Кількість',
+                    DateOfPurchase AS 'Дата закупівлі',
+                    TotalSum AS 'Сума'
+                FROM 
+                    MaterialsPurchases";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable(); // Створимо новий DataTable для збереження результатів запиту
+
+                adapter.Fill(dataTable); // Заповнимо DataTable результатами запиту
+                dgw.DataSource = dataTable; // Прив'яжемо DataTable до DataGridView
+
+                db.CloseConnection(connection);
+            }
+        }
+
+        private void btn_purchaseMaterials_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
