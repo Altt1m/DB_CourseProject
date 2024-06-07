@@ -40,12 +40,12 @@ namespace WinFormsApp1._Admin_
                 if (requestType == "connection")
                 {
                     query = "SELECT COUNT(*) FROM ProvidedServices " +
-                        "WHERE Id = @Id AND Title = 'Підключення до мережі' AND Status = 'Опрацьовується'";
+                        "WHERE Id = @Id AND Title = 'Підключення до мережі'";
                 }
                 else if (requestType == "repair")
                 {
                     query = "SELECT COUNT(*) FROM ProvidedServices " +
-                        "WHERE Id = @Id AND Title LIKE 'Ремонт:%' AND Status = 'Опрацьовується'";
+                        "WHERE Id = @Id AND Title LIKE 'Ремонт:%'";
                 }
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -63,14 +63,12 @@ namespace WinFormsApp1._Admin_
                 }
                 else
                 {
-                    MessageBox.Show($"Рядок з ID {id} знайдено.", "ID знайдено", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
                     int requestId = Convert.ToInt32(textBox_Id.Text);
                     FormRequestForm formRequest = new FormRequestForm(requestType, requestId);
                     formRequest.ShowDialog();
                     this.Close();
                     return;
-                    // Додаткові дії можна реалізувати тут
                 }
             }
         }

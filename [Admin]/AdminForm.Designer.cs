@@ -40,6 +40,7 @@
             btn_purchaseMaterials = new Button();
             btn_purchases = new Button();
             btn_other = new Button();
+            btn_pay = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView_admin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)icon_logo).BeginInit();
             panel1.SuspendLayout();
@@ -94,7 +95,7 @@
             // 
             // btn_сonnectionRequests
             // 
-            btn_сonnectionRequests.Location = new Point(185, 135);
+            btn_сonnectionRequests.Location = new Point(185, 108);
             btn_сonnectionRequests.Name = "btn_сonnectionRequests";
             btn_сonnectionRequests.Size = new Size(132, 60);
             btn_сonnectionRequests.TabIndex = 9;
@@ -104,7 +105,7 @@
             // 
             // btn_repairRequests
             // 
-            btn_repairRequests.Location = new Point(185, 220);
+            btn_repairRequests.Location = new Point(185, 184);
             btn_repairRequests.Name = "btn_repairRequests";
             btn_repairRequests.Size = new Size(132, 60);
             btn_repairRequests.TabIndex = 10;
@@ -114,7 +115,7 @@
             // 
             // btn_formConnectionRequest
             // 
-            btn_formConnectionRequest.Location = new Point(29, 135);
+            btn_formConnectionRequest.Location = new Point(29, 108);
             btn_formConnectionRequest.Name = "btn_formConnectionRequest";
             btn_formConnectionRequest.Size = new Size(132, 60);
             btn_formConnectionRequest.TabIndex = 11;
@@ -124,7 +125,7 @@
             // 
             // btn_formRepairRequest
             // 
-            btn_formRepairRequest.Location = new Point(29, 220);
+            btn_formRepairRequest.Location = new Point(29, 185);
             btn_formRepairRequest.Name = "btn_formRepairRequest";
             btn_formRepairRequest.Size = new Size(132, 60);
             btn_formRepairRequest.TabIndex = 12;
@@ -134,7 +135,7 @@
             // 
             // btn_purchaseMaterials
             // 
-            btn_purchaseMaterials.Location = new Point(29, 306);
+            btn_purchaseMaterials.Location = new Point(29, 262);
             btn_purchaseMaterials.Name = "btn_purchaseMaterials";
             btn_purchaseMaterials.Size = new Size(132, 60);
             btn_purchaseMaterials.TabIndex = 13;
@@ -143,7 +144,7 @@
             // 
             // btn_purchases
             // 
-            btn_purchases.Location = new Point(185, 306);
+            btn_purchases.Location = new Point(185, 260);
             btn_purchases.Name = "btn_purchases";
             btn_purchases.Size = new Size(132, 60);
             btn_purchases.TabIndex = 14;
@@ -152,12 +153,22 @@
             // 
             // btn_other
             // 
-            btn_other.Location = new Point(107, 398);
+            btn_other.Location = new Point(29, 416);
             btn_other.Name = "btn_other";
             btn_other.Size = new Size(132, 60);
             btn_other.TabIndex = 15;
             btn_other.Text = "Інше";
             btn_other.UseVisualStyleBackColor = true;
+            // 
+            // btn_pay
+            // 
+            btn_pay.Location = new Point(29, 339);
+            btn_pay.Name = "btn_pay";
+            btn_pay.Size = new Size(132, 60);
+            btn_pay.TabIndex = 16;
+            btn_pay.Text = "Сплатити рахунки робітникам";
+            btn_pay.UseVisualStyleBackColor = true;
+            btn_pay.Click += btn_pay_Click;
             // 
             // AdminForm
             // 
@@ -165,6 +176,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 255, 192);
             ClientSize = new Size(1026, 538);
+            Controls.Add(btn_pay);
             Controls.Add(btn_other);
             Controls.Add(btn_purchases);
             Controls.Add(btn_purchaseMaterials);
@@ -198,5 +210,6 @@
         private Button btn_purchaseMaterials;
         private Button btn_purchases;
         private Button btn_other;
+        private Button btn_pay;
     }
 }

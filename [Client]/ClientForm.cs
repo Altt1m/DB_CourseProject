@@ -30,9 +30,12 @@ namespace WinFormsApp1
             SqlConnection connection = db.GetConnection();
 
             string connectionCheckQuery = $"SELECT Id FROM ProvidedServices" +
-                            $" WHERE Title='Підключення до мережі' AND ClientId='{clientId}'";
+                            $" WHERE Title='Підключення до мережі' AND ClientId={clientId}";
+
+            string addressCheckQuery = $"SELECT Address FROM ProvidedServices WHERE ClientId={clientId}";
 
             SqlCommand connectionCheckCommand = new SqlCommand(connectionCheckQuery, connection);
+            SqlCommand addressCheckCommand = new SqlCommand(addressCheckQuery, connection);
 
             adapter.SelectCommand = connectionCheckCommand;
             adapter.Fill(table);
@@ -42,16 +45,11 @@ namespace WinFormsApp1
                 btn_createConnectionRequest.Enabled = false;
             }
 
-            string addressCheckQuery = $"SELECT Address FROM Clients WHERE Id = {clientId}";
-            SqlCommand addressCheckCommand = new SqlCommand(addressCheckQuery, connection);
-
             adapter.SelectCommand = addressCheckCommand;
             adapter.Fill(table);
 
-            if (table.Rows.Count >= 1)
-            {
-                btn_createRepairRequest.Enabled = true;
-            }
+            if (table.Rows.Count != 0 && table.Rows[0]["Address"] != null) btn_createRepairRequest.Enabled = true;
+
         }
 
         public void LockConnectionRequestButton()

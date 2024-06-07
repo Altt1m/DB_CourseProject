@@ -50,9 +50,10 @@
             dateTimePicker_dateOfStart = new DateTimePicker();
             dateTimePicker_dateOfFinish = new DateTimePicker();
             textBox_price = new TextBox();
-            btn_form = new Button();
+            btn_formRequest = new Button();
             label1 = new Label();
-            comboBox1 = new ComboBox();
+            comboBox_teams = new ComboBox();
+            btn_removeRequest = new Button();
             ((System.ComponentModel.ISupportInitialize)icon_logo).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -188,7 +189,6 @@
             textBox_description.Name = "textBox_description";
             textBox_description.Size = new Size(333, 116);
             textBox_description.TabIndex = 22;
-            textBox_description.TextAlign = HorizontalAlignment.Center;
             // 
             // label_address
             // 
@@ -263,16 +263,18 @@
             textBox_price.TabIndex = 30;
             textBox_price.TextAlign = HorizontalAlignment.Center;
             // 
-            // btn_form
+            // btn_formRequest
             // 
-            btn_form.FlatStyle = FlatStyle.Popup;
-            btn_form.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_form.Location = new Point(164, 552);
-            btn_form.Name = "btn_form";
-            btn_form.Size = new Size(133, 49);
-            btn_form.TabIndex = 31;
-            btn_form.Text = "Оформити";
-            btn_form.UseVisualStyleBackColor = true;
+            btn_formRequest.BackColor = Color.Lime;
+            btn_formRequest.FlatStyle = FlatStyle.Popup;
+            btn_formRequest.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_formRequest.Location = new Point(242, 552);
+            btn_formRequest.Name = "btn_formRequest";
+            btn_formRequest.Size = new Size(119, 49);
+            btn_formRequest.TabIndex = 31;
+            btn_formRequest.Text = "Оформити";
+            btn_formRequest.UseVisualStyleBackColor = false;
+            btn_formRequest.Click += btn_formRequest_Click;
             // 
             // label1
             // 
@@ -284,13 +286,26 @@
             label1.TabIndex = 32;
             label1.Text = "Бригада";
             // 
-            // comboBox1
+            // comboBox_teams
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(229, 503);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(159, 23);
-            comboBox1.TabIndex = 33;
+            comboBox_teams.FormattingEnabled = true;
+            comboBox_teams.Location = new Point(229, 503);
+            comboBox_teams.Name = "comboBox_teams";
+            comboBox_teams.Size = new Size(159, 23);
+            comboBox_teams.TabIndex = 33;
+            // 
+            // btn_removeRequest
+            // 
+            btn_removeRequest.BackColor = Color.Tomato;
+            btn_removeRequest.FlatStyle = FlatStyle.Popup;
+            btn_removeRequest.Font = new Font("Bahnschrift SemiCondensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_removeRequest.Location = new Point(90, 552);
+            btn_removeRequest.Name = "btn_removeRequest";
+            btn_removeRequest.Size = new Size(121, 49);
+            btn_removeRequest.TabIndex = 34;
+            btn_removeRequest.Text = "Видалити";
+            btn_removeRequest.UseVisualStyleBackColor = false;
+            btn_removeRequest.Click += btn_removeRequest_Click;
             // 
             // FormRequestForm
             // 
@@ -298,9 +313,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 255, 192);
             ClientSize = new Size(451, 613);
-            Controls.Add(comboBox1);
+            Controls.Add(btn_removeRequest);
+            Controls.Add(comboBox_teams);
             Controls.Add(label1);
-            Controls.Add(btn_form);
+            Controls.Add(btn_formRequest);
             Controls.Add(textBox_price);
             Controls.Add(dateTimePicker_dateOfFinish);
             Controls.Add(dateTimePicker_dateOfStart);
@@ -320,7 +336,9 @@
             Controls.Add(textBox_Id);
             Controls.Add(label_Id);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormRequestForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Оформити запит";
             ((System.ComponentModel.ISupportInitialize)icon_logo).EndInit();
             panel1.ResumeLayout(false);
@@ -352,8 +370,9 @@
         private DateTimePicker dateTimePicker_dateOfStart;
         private DateTimePicker dateTimePicker_dateOfFinish;
         private TextBox textBox_price;
-        private Button btn_form;
+        private Button btn_formRequest;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox comboBox_teams;
+        private Button btn_removeRequest;
     }
 }

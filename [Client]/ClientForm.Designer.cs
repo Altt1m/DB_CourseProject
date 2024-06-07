@@ -102,6 +102,7 @@
             // 
             // btn_createRepairRequest
             // 
+            btn_createRepairRequest.Enabled = false;
             btn_createRepairRequest.Location = new Point(196, 94);
             btn_createRepairRequest.Name = "btn_createRepairRequest";
             btn_createRepairRequest.Size = new Size(132, 60);

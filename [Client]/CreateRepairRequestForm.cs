@@ -36,7 +36,7 @@ namespace WinFormsApp1._Client_
                 return;
             }
 
-            if ((dateTimePicker_Begin.Value - DateTime.Now).TotalDays < 0)
+            if ((dateTimePicker_Begin.Value - DateTime.Now).TotalDays < -1)
             {
                 MessageBox.Show("Оберіть щонайменше сьогоднішню дату.", "Дата початку", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -60,7 +60,6 @@ namespace WinFormsApp1._Client_
             {
                 db.OpenConnection(connection);
                 transaction = connection.BeginTransaction();
-
 
                 SqlCommand selectAddressCommand = new SqlCommand(selectAddressQuery, connection, transaction);
 

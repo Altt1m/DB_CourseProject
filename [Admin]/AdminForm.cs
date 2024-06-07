@@ -1,3 +1,4 @@
+using Azure.Core;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using WinFormsApp1._Admin_;
@@ -26,6 +27,7 @@ namespace WinFormsApp1
                 string query = $@"
                 SELECT 
                     ps.Id AS 'ID',
+                    ps.Status AS 'Стан',
                     ps.Address AS 'Адреса',
                     ps.DateOfStart AS 'Дата початку',
                     c.LastName AS 'Прізвище',
@@ -37,7 +39,9 @@ namespace WinFormsApp1
                 JOIN 
                     Clients c ON ps.ClientId = c.Id
                 WHERE 
-                    ps.Title = 'Підключення до мережі'";
+                    ps.Title = 'Підключення до мережі'
+                ORDER BY 
+                    ps.DateOfStart";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dataTable = new DataTable(); // Створимо новий DataTable для збереження результатів запиту
@@ -63,6 +67,7 @@ namespace WinFormsApp1
                 SELECT 
                     ps.Id AS 'ID',
                     ps.Address AS 'Адреса',
+                    ps.Status AS 'Стан',
                     ps.DateOfStart AS 'Дата початку',
                     c.LastName AS 'Прізвище',
                     c.FirstName AS 'Ім''я',
@@ -95,6 +100,47 @@ namespace WinFormsApp1
         {
             ChooseRequestIdForm requestId = new ChooseRequestIdForm("repair");
             requestId.ShowDialog();
+        }
+
+        private void btn_pay_Click(object sender, EventArgs e)
+        {
+            decimal total;
+
+            string selectQuery = @"
+            SELECT SUM(TotalSum) AS TotalSumTotal
+            FROM EmployeesPayments 
+            WHERE DateOfPayment IS NULL";
+
+            string updateQuery = $@"
+                UPDATE EmployeesPayments
+                SET DateOfPayment = @Date
+                WHERE DateOfPayment IS NULL";
+
+            using (SqlConnection connection = db.GetConnection())
+            {
+                db.OpenConnection(connection);
+
+                SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+                updateCommand.Parameters.AddWithValue("@Date", DateTime.Today);
+
+                total = (decimal)selectCommand.ExecuteScalar();
+
+                if (total > 0)
+                {
+                    updateCommand.ExecuteNonQuery();
+
+                    MessageBox.Show($"{DateTime.Today.Date} було виплачено {total:F2} грн.", "Виплата робітникам", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    db.CloseConnection(connection);
+                }
+                else
+                {
+                    MessageBox.Show($"Виплата нікому не потрібна", "Виплата робітникам", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    db.CloseConnection(connection);
+                }
+
+            }
+
         }
     }
 }
