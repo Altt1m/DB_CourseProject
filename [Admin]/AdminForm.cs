@@ -155,13 +155,17 @@ namespace WinFormsApp1
                 db.OpenConnection(connection);
                 string query = $@"
                 SELECT 
-                    MaterialId AS 'ID матеріалу',
-                    SupplierId AS 'ID постачальника',
-                    MaterialsCount AS 'Кількість',
-                    DateOfPurchase AS 'Дата закупівлі',
-                    TotalSum AS 'Сума'
+                    m.Title AS 'Матеріал',
+                    s.Title AS 'Постачальник',
+                    mp.MaterialsCount AS 'Кількість',
+                    mp.DateOfPurchase AS 'Дата закупівлі',
+                    FORMAT(mp.TotalSum, 'N2') AS 'Сума'
                 FROM 
-                    MaterialsPurchases";
+                    MaterialsPurchases mp
+                JOIN
+                    Suppliers s ON s.Id = mp.SupplierId
+                JOIN
+                    Materials m ON m.Id = mp.MaterialId";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dataTable = new DataTable(); // Створимо новий DataTable для збереження результатів запиту
@@ -175,7 +179,8 @@ namespace WinFormsApp1
 
         private void btn_purchaseMaterials_Click(object sender, EventArgs e)
         {
-
+            PurchaseMaterialsForm form = new PurchaseMaterialsForm();
+            form.ShowDialog();
         }
     }
 }
