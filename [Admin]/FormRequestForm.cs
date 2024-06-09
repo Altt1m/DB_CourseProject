@@ -140,6 +140,7 @@ namespace WinFormsApp1._Admin_
                 updateCommand.Parameters.AddWithValue("@Price", Convert.ToInt32(textBox_price.Text));
                 updateCommand.Parameters.AddWithValue("@TeamId", selectedTeamId);
 
+                if (!WriteOffMaterials()) return;
                 int rowsAffected = updateCommand.ExecuteNonQuery();
 
                 db.CloseConnection(connection);
@@ -159,6 +160,7 @@ namespace WinFormsApp1._Admin_
 
             CreateSettlement(Convert.ToInt32(textBox_clientId.Text), Convert.ToInt32(textBox_price.Text));
             CreatePayments(selectedTeamId);
+            
 
             this.Hide(); this.Close();
         }
@@ -393,6 +395,83 @@ namespace WinFormsApp1._Admin_
                 {
                     MessageBox.Show("Не вдалося оновити адресу клієнта.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        public bool WriteOffMaterials()
+        {
+            // Перевірка кількості матеріалів
+            if (!CheckMaterialAvailability("Труба", 2) ||
+                !CheckMaterialAvailability("Гайка", 4) ||
+                !CheckMaterialAvailability("Болт", 4) ||
+                !CheckMaterialAvailability("Прокладка", 4))
+            {
+                // Якщо матеріалів недостатньо, вивести повідомлення
+                MessageBox.Show("Недостатня кількість матеріалів!", "Кількість", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // Оновлення кількості матеріалів
+            UpdateMaterialAmount("Труба", 2);
+            UpdateMaterialAmount("Гайка", 4);
+            UpdateMaterialAmount("Болт", 4);
+            UpdateMaterialAmount("Прокладка", 4);
+
+            // Додаємо записи про списання матеріалів
+            AddMaterialWriteOff("Труба", 2, DateTime.Today);
+            AddMaterialWriteOff("Гайка", 4, DateTime.Today);
+            AddMaterialWriteOff("Болт", 4, DateTime.Today);
+            AddMaterialWriteOff("Прокладка", 4, DateTime.Today);
+
+            return true;
+        }
+
+        private bool CheckMaterialAvailability(string title, int requiredAmount)
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                connection.Open();
+                string query = $"SELECT Amount FROM Materials WHERE Title = @Title";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Title", title);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    int currentAmount = reader.GetInt32(0);
+                    return currentAmount >= requiredAmount;
+                }
+
+                return false;
+            }
+        }
+
+        private void UpdateMaterialAmount(string title, int amount)
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                connection.Open();
+                string query = @"UPDATE Materials SET Amount = Amount - @Amount WHERE Title = @Title";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Title", title);
+                command.Parameters.AddWithValue("@Amount", amount);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void AddMaterialWriteOff(string title, int amount, DateTime date)
+        {
+            using (SqlConnection connection = db.GetConnection())
+            {
+                connection.Open();
+                string query = @"
+                    INSERT INTO ProvidedServicesMaterials (MaterialId, MaterialsCount, DateOfWriteOff)
+                    VALUES ((SELECT Id FROM Materials WHERE Title = @Title), @Amount, @Date)";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Title", title);
+                command.Parameters.AddWithValue("@Amount", amount);
+                command.Parameters.AddWithValue("@Date", date);
+                command.ExecuteNonQuery();
             }
         }
 

@@ -124,7 +124,15 @@ namespace WinFormsApp1
                 SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
                 updateCommand.Parameters.AddWithValue("@Date", DateTime.Today);
 
-                total = (decimal)selectCommand.ExecuteScalar();
+                try
+                {
+                    total = (decimal)selectCommand.ExecuteScalar();
+                }
+                catch
+                {
+                    total = 0;
+                }
+                
 
                 if (total > 0)
                 {

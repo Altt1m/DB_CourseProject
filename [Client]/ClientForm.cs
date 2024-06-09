@@ -180,7 +180,8 @@ namespace WinFormsApp1
 
             string updateQuery = $@"
                 UPDATE ClientsSettlements
-                SET DateOfSettlement = @Date
+                SET DateOfSettlement = @Date,
+                Status = 'Оплачено'
                 WHERE DateOfSettlement IS NULL";
 
             using (SqlConnection connection = db.GetConnection())
